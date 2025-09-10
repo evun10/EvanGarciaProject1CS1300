@@ -1,11 +1,15 @@
 # import turtle from turtle module.
 import turtle
+# import random from the random module.
+import random
 
 # creates a turtle object named "dog".
 t = turtle.Turtle()
 
 # creates a sceeen object named "screen". This will create a GUI window.
 world = turtle.Screen()
+# changes the color of the "world" screen to light blue!
+world.bgcolor("lightblue")
 
 # function draw_square will draw a square! 
 # t is turtle.
@@ -81,33 +85,43 @@ def draw_mouth(t, x, y):
     t.down()
     t.forward(100)
 
+# function draw_border will draw a border around my dog while also using the random module to randomize colors for each shape drawn!
+def draw_border(t, size):
+    t.up()
+    t.goto(-100, 100)
+    t.down()
+
+
 # main function that will run our application.
 def main():
+    print("Evan Garcia - Project 1")
     # draw_filled_square is the face of the dog.
-    draw_filled_square(t, 500, "tan")
+    draw_filled_square(t, 200, "tan")
 
     # creates the right ear.
     t.up()
-    t.goto(500,0)
+    t.goto(200,0)
     t.down()
-    draw_ears(t, 200, "tan")
+    draw_ears(t, 120, "tan")
 
     # creates the left ear.
     t.up()
-    t.goto(-200,0)
+    t.goto(-120,0)
     t.down()
-    draw_ears(t, 200, "tan")
+    draw_ears(t, 120, "tan")
 
     # creates both eyes.
-    draw_eyes(t, 50, 150, -150, "white")
-    draw_eyes(t, 50, 350, -150, "white")
+    draw_eyes(t, 30, 50, -80, "white")
+    draw_eyes(t, 30, 150, -80, "white")
 
     # creates the pupils for the eyes!
-    draw_eyes(t, 30, 150, -150, "black")
-    draw_eyes(t, 30, 350, -150, "black")
+    draw_eyes(t, 10, 50, -80, "black")
+    draw_eyes(t, 10, 150, -80, "black")
 
-    draw_nose(t, 150, 180, -250, "black")
+    # creates the nose for the dog!
+    draw_nose(t, 50, 80, -100, "black")
 
-    draw_mouth(t, 100, -400)
+    # creates the mouth for the dog!
+    draw_mouth(t, 80, -170)
     turtle.done()
 main()
