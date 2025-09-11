@@ -6,13 +6,18 @@ import random
 # creates a turtle object named "dog".
 t = turtle.Turtle()
 
+# colors initialzes a list of colors for random cycle through each color. This initialization is for the function draw_border.
+colors = ["red", "blue", "cyan", "white", "black", "tan", "yellow", "purple", "orange", "pink"]
+
 # creates a sceeen object named "screen". This will create a GUI window.
 world = turtle.Screen()
+
+world.setup(width=1000, height=1000)
 # changes the color of the "world" screen to light blue!
 world.bgcolor("lightblue")
 
 # function draw_square will draw a square! 
-# t is turtle.
+# t is turtle. 
 # size is the size of the square.
 def draw_square(t, size):
     for i in range(4):
@@ -86,11 +91,26 @@ def draw_mouth(t, x, y):
     t.forward(100)
 
 # function draw_border will draw a border around my dog while also using the random module to randomize colors for each shape drawn!
+# t is the turtle.
+# size is the size of the border.
 def draw_border(t, size):
     t.up()
-    t.goto(-100, 100)
+    t.goto(-120, 100)
     t.down()
-
+    # beginning of loop that allows the border's to be drawn on each side of the dog.
+    for i in range(4):
+        # this loop begins drawing each square, I found that just drawing a square would be easier than drawing any other shape.
+        for i in range(15):
+            # Uses "t" the turtle's pencolor and uses random to cycle through each color in the list to allow the create rando, colorized border's.
+            t.pencolor(random.choice(colors))
+            # I decidedd to hardcode in a square as I found issues with using my draw_square function.
+            for i in range(4):
+                t.forward(size)
+                t.right(90)
+            t.forward(size)
+        # these two calls to "t" the turtle allows the borders to move to each side so I can create a proper border.
+        t.right(90)
+        t.forward(size)
 
 # main function that will run our application.
 def main():
@@ -123,5 +143,7 @@ def main():
 
     # creates the mouth for the dog!
     draw_mouth(t, 80, -170)
+
+    draw_border(t, 50)
     turtle.done()
 main()
